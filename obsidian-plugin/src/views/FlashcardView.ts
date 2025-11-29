@@ -11,7 +11,6 @@ export const FLASHCARD_VIEW_TYPE = 'pyqs-flashcard-view';
 
 export class FlashcardView extends ItemView {
     private plugin: StudyPlatformPlugin;
-    private containerEl: HTMLElement;
     private currentCards: Flashcard[] = [];
     private currentIndex: number = 0;
     private isFlipped: boolean = false;

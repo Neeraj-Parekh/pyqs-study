@@ -88,6 +88,8 @@ export function shuffleArray<T>(array: T[]): T[] {
 
 /**
  * Debounce function
+ * Returns a debounced version of the function that delays execution
+ * Note: Due to debouncing, the return value is always void (async execution)
  */
 export function debounce<T extends (...args: any[]) => any>(
     func: T,
@@ -95,7 +97,7 @@ export function debounce<T extends (...args: any[]) => any>(
 ): (...args: Parameters<T>) => void {
     let timeout: ReturnType<typeof setTimeout> | null = null;
     
-    return function(this: any, ...args: Parameters<T>) {
+    return function(this: any, ...args: Parameters<T>): void {
         if (timeout) clearTimeout(timeout);
         timeout = setTimeout(() => func.apply(this, args), wait);
     };
@@ -110,7 +112,7 @@ export function throttle<T extends (...args: any[]) => any>(
 ): (...args: Parameters<T>) => void {
     let inThrottle: boolean;
     
-    return function(this: any, ...args: Parameters<T>) {
+    return function(this: any, ...args: Parameters<T>): void {
         if (!inThrottle) {
             func.apply(this, args);
             inThrottle = true;

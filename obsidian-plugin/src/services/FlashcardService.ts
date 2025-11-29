@@ -6,6 +6,13 @@
 import { Flashcard, FlashcardDeck } from '../types';
 import StudyPlatformPlugin from '../main';
 
+// SM-2 Algorithm Constants
+const QUALITY_PASS_THRESHOLD = 3; // Minimum quality rating to pass (0-2 = fail, 3-5 = pass)
+const DEFAULT_EASE_FACTOR = 2.5;
+const MINIMUM_EASE_FACTOR = 1.3;
+const FIRST_INTERVAL = 1; // days
+const SECOND_INTERVAL = 6; // days
+
 export class FlashcardService {
     private plugin: StudyPlatformPlugin;
     private decks: FlashcardDeck[] = [];
@@ -81,7 +88,7 @@ export class FlashcardService {
             deck: deckId,
             tags,
             createdAt: new Date(),
-            easeFactor: 2.5, // Default ease factor for SM-2
+            easeFactor: DEFAULT_EASE_FACTOR,
             interval: 0,
             repetitions: 0,
         };
@@ -122,16 +129,16 @@ export class FlashcardService {
         if (!card) return;
 
         // SM-2 Algorithm
-        if (quality < 3) {
+        if (quality < QUALITY_PASS_THRESHOLD) {
             // Failed - reset
             card.repetitions = 0;
-            card.interval = 1;
+            card.interval = FIRST_INTERVAL;
         } else {
             // Passed
             if (card.repetitions === 0) {
-                card.interval = 1;
+                card.interval = FIRST_INTERVAL;
             } else if (card.repetitions === 1) {
-                card.interval = 6;
+                card.interval = SECOND_INTERVAL;
             } else {
                 card.interval = Math.round(card.interval * card.easeFactor * this.plugin.settings.intervalModifier);
             }
@@ -139,7 +146,7 @@ export class FlashcardService {
         }
 
         // Update ease factor
-        card.easeFactor = Math.max(1.3, card.easeFactor + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02)));
+        card.easeFactor = Math.max(MINIMUM_EASE_FACTOR, card.easeFactor + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02)));
         
         // Apply ease bonus for easy responses
         if (quality === 5) {

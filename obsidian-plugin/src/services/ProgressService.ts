@@ -6,6 +6,10 @@
 import { StudyProgress, DailyProgress, StudySession } from '../types';
 import StudyPlatformPlugin from '../main';
 
+// Default goal constants (in minutes)
+const DEFAULT_DAILY_GOAL_MINUTES = 60;
+const DEFAULT_WEEKLY_GOAL_MINUTES = 420; // 7 hours per week
+
 export class ProgressService {
     private plugin: StudyPlatformPlugin;
     private progress: StudyProgress;
@@ -28,8 +32,8 @@ export class ProgressService {
             pdfsRead: 0,
             ocrScansCompleted: 0,
             streakDays: 0,
-            dailyGoalMinutes: this.plugin?.settings?.dailyGoalMinutes || 60,
-            weeklyGoalMinutes: this.plugin?.settings?.weeklyGoalMinutes || 420,
+            dailyGoalMinutes: this.plugin?.settings?.dailyGoalMinutes || DEFAULT_DAILY_GOAL_MINUTES,
+            weeklyGoalMinutes: this.plugin?.settings?.weeklyGoalMinutes || DEFAULT_WEEKLY_GOAL_MINUTES,
         };
     }
 

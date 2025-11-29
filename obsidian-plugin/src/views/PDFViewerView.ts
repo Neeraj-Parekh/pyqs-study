@@ -275,7 +275,12 @@ export class PDFViewerView extends ItemView {
             });
         }
 
-        menu.showAtMouseEvent(new MouseEvent('click'));
+        // Show menu at center of container
+        const containerRect = this.containerEl.getBoundingClientRect();
+        menu.showAtPosition({
+            x: containerRect.left + containerRect.width / 2,
+            y: containerRect.top + 100
+        });
     }
 
     async loadPDF(file: TFile) {
@@ -307,8 +312,7 @@ export class PDFViewerView extends ItemView {
                 },
             });
 
-            // Update view title
-            this.leaf.updateHeader();
+            // View title is automatically updated through getDisplayText()
         } catch (error) {
             console.error('Failed to load PDF:', error);
             this.pdfContainer.empty();
@@ -361,7 +365,12 @@ export class PDFViewerView extends ItemView {
                 .onClick(() => this.addAnnotation('underline'));
         });
 
-        menu.showAtMouseEvent(new MouseEvent('click'));
+        // Show menu at center of container
+        const containerRect = this.containerEl.getBoundingClientRect();
+        menu.showAtPosition({
+            x: containerRect.left + containerRect.width / 2,
+            y: containerRect.top + 100
+        });
     }
 
     private async addAnnotation(type: 'highlight' | 'underline' | 'note' | 'drawing') {
