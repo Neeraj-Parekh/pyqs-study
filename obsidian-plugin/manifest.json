@@ -1,0 +1,10 @@
+{
+  "id": "pyqs-study-platform",
+  "name": "PYQs Study Platform",
+  "version": "1.0.0",
+  "minAppVersion": "1.0.0",
+  "description": "A comprehensive self-study platform with PDF reading, annotation, OCR, flashcards, and progress tracking. No ads, no banners, no pop-ups - just focused learning.",
+  "author": "PYQs Study Team",
+  "authorUrl": "https://github.com/Neeraj-Parekh/pyqs-study",
+  "isDesktopOnly": false
+}
