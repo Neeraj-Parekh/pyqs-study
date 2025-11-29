@@ -1,16 +1,18 @@
-# MITAoE PYQs - Previous Year Question Papers
+# PYQs Study Platform
 
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square)](https://www.typescriptlang.org/)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3-38B2AC?style=flat-square)](https://tailwindcss.com/)
+[![Obsidian](https://img.shields.io/badge/Obsidian-Plugin-purple?style=flat-square)](https://obsidian.md/)
 [![MIT License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](#license)
 
-Enhanced interface for accessing MIT Academy of Engineering (MITAoE) previous year question papers with a subject-focused approach for easier navigation.
+A comprehensive study platform with question paper access and an Obsidian plugin for focused self-study. **No ads, no banners, no pop-ups - just learning.**
 
-![MITAoE PYQs Screenshot](https://mitaoe-pyqs.vercel.app/og-image.png)
+![PYQs Study Platform](https://mitaoe-pyqs.vercel.app/og-image.png)
 
-## 🎯 Key Features
+## 🎯 Platform Features
 
+### Web Application (MITAoE PYQs)
 - **Subject-focused organization** - Find papers by subject name
 - **Batch download capability** - Get multiple papers at once
 - **Mobile-friendly interface** - Access on any device
@@ -19,12 +21,55 @@ Enhanced interface for accessing MIT Academy of Engineering (MITAoE) previous ye
 - **Intelligent subject classification** with fuzzy matching
 - **Free access** - No login required
 
+### 📚 Obsidian Plugin - Study Platform
+A powerful self-study companion for Obsidian with these features:
+
+#### PDF Viewer & Reader
+- Open and view PDF files directly in Obsidian
+- Navigation controls and zoom
+- Bookmarks and annotations
+- Export annotations to markdown notes
+
+#### OCR (Optical Character Recognition)
+- Extract text from scanned PDFs and images
+- Powered by Tesseract.js (open-source)
+- Support for 13+ languages
+- Create notes from extracted text
+
+#### Flashcards with Spaced Repetition
+- Create flashcards from any text
+- SM-2 spaced repetition algorithm
+- Organize cards into decks
+- Daily review tracking
+
+#### Pomodoro Timer
+- Built-in focus timer
+- Customizable work/break durations
+- Track completed sessions
+
+#### Progress Tracking
+- Daily and weekly study time
+- Streak counter
+- Achievement system
+- Visual progress charts
+
+See [obsidian-plugin/README.md](obsidian-plugin/README.md) for detailed documentation.
+
 ## 📚 Quick Start
 
+### Web Application
 Visit [mitaoe-pyqs.vercel.app](https://mitaoe-pyqs.vercel.app) and:
 1. Search by subject name (e.g., "Computer Networks")
 2. Apply filters for specific years/exam types (optional)
 3. Download individual papers or select multiple for batch download
+
+### Obsidian Plugin
+1. Open Obsidian Settings
+2. Go to Community Plugins
+3. Search for "PYQs Study Platform"
+4. Click Install, then Enable
+
+Or manually install from the `obsidian-plugin` directory.
 
 ## 🎓 Supported Departments
 
@@ -40,13 +85,23 @@ Visit [mitaoe-pyqs.vercel.app](https://mitaoe-pyqs.vercel.app) and:
 
 ### Tech Stack
 
+**Web Application:**
 - **Frontend**: Next.js 15
 - **Backend**: Next.js API routes
 - **Language**: TypeScript
 - **Styling**: TailwindCSS
 - **Deployment**: Vercel
 
+**Obsidian Plugin:**
+- **Platform**: Obsidian
+- **Language**: TypeScript
+- **PDF**: PDF.js
+- **OCR**: Tesseract.js (open-source)
+- **Build**: esbuild
+
 ### Local Development
+
+#### Web Application
 
 ```bash
 # Clone the repository
@@ -75,6 +130,34 @@ pnpm dev
 # Optional: Run crawler for /browse route data
 # pnpm crawl
 ```
+
+#### Obsidian Plugin
+
+```bash
+# Navigate to the plugin directory
+cd obsidian-plugin
+
+# Install dependencies
+npm install
+
+# Build for production
+npm run build
+
+# Development mode (watch for changes)
+npm run dev
+```
+
+## 🔒 Privacy & Clean Experience
+
+This project is committed to providing a distraction-free learning experience:
+
+- ✅ **No advertisements** - Ever
+- ✅ **No banners** - Clean interface
+- ✅ **No pop-ups** - Focus on learning
+- ✅ **No pricing** - Completely free
+- ✅ **No tracking** - Your data stays with you
+- ✅ **No weird AI messages** - Just useful tools
+- ✅ **Offline support** - Obsidian plugin works without internet
 
 ## Acknowledgements
 
